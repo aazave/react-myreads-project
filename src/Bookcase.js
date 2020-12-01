@@ -8,9 +8,10 @@ class Bookcase extends Component {
     bookShelves: ["Currently Reading", "Want to Read", "Read"],
   }
 
+
   render() {
 
-    const { books } = this.props;
+    const { books, updateShelf } = this.props;
     const { bookShelves } = this.state;
 
     return (
@@ -20,7 +21,7 @@ class Bookcase extends Component {
         </div>
         <div className="list-books-content">
           {bookShelves.map((shelf) => (
-            <Bookshelf key={shelf} shelfName={shelf} books={books} />
+            <Bookshelf key={shelf} shelfName={shelf} books={books} updateShelf={updateShelf} />
           ))}
         </div>
         <div className="open-search">

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Book = props => {
   const { authors, imageLinks, title, shelf } = props.book;
@@ -9,7 +8,7 @@ const Book = props => {
         <div className="book-top">
           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${!!imageLinks && imageLinks.thumbnail})` }}></div>
           <div className="book-shelf-changer">
-            <select value={shelf}>
+            <select value={!!shelf && shelf} onChange={(event) => props.updateShelf(props.book, event.target.value)}>
               <option value="move" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
@@ -27,11 +26,6 @@ const Book = props => {
 
 }
 
-Book.propTypes = {
-  authors: PropTypes.array.isRequired,
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  shelf: PropTypes.string.isRequired
-}
+
 
 export default Book;

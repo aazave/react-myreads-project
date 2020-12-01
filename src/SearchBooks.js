@@ -7,44 +7,59 @@ class SearchBooks extends Component {
 
   state = {
     query: '',
-    books: []
+    searchbooks: []
   }
 
   updateQuery = query => {
 
     this.setState(() => ({
-      query: query
+      query: query,
+      searchbooks: []
     }))
 
     this.bookQuery(query)
   }
 
   bookQuery = (query) => {
-    BooksAPI.search(query)
-      .then((books) => {
-        this.setState(() => ({
-          books: books
-        }))
-      })
+    if (query !== '') {
+      BooksAPI.search(query)
+        .then((books) => {
+          if ((books !== undefined && !books.error)) {
+            const updatedBooks = this.updateBookShelfState(books)
+            this.setState(() => ({
+              searchbooks: updatedBooks
+            }))
+          }
+        })
+    }
+  }
+
+  updateBookShelfState = (books) => {
+    for (const book of books) {
+      book.shelf = 'none';
+      for (const shelfbook of this.props.books) {
+        if (book.id === shelfbook.id) book.shelf = shelfbook.shelf
+      }
+    }
+
+    return books;
+
+  }
+
+  updateShelfHandler = (book, shelf) => {
+    book.shelf = shelf;
+    this.props.updateShelf(book, shelf)
   }
 
 
   render() {
-    const { query, books } = this.state;
+    const { query, searchbooks } = this.state;
 
     return (
       <div className="search-books">
         <div className="search-books-bar">
           <Link to='/' className='close-search' ></Link>
           <div className="search-books-input-wrapper">
-            {/*
-                  NOTES: The search from BooksAPI is limited to a particular set of search terms.
-                  You can find these search terms here:
-                  https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
-                  However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-                  you don't find a specific author or title. Every search is limited by search terms.
-                */}
             <input type="text"
               placeholder="Search by title or author"
               value={query}
@@ -54,9 +69,11 @@ class SearchBooks extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {(books !== undefined && !books.error) && books.map((book) => (
+            {(searchbooks !== undefined && !searchbooks.error) && searchbooks.map((book) => (
               <Book key={book.id}
-                book={book} />
+                book={book}
+                updateShelf={this.updateShelfHandler}
+              />
             ))}
           </ol>
         </div>
