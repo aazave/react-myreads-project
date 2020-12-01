@@ -11,7 +11,7 @@ How to get up and running with this project:
 
 ## Backend Server
 
-The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
+The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods that I perform on the backend:
 
 * [`getAll`](#getall)
 * [`update`](#update)
@@ -26,7 +26,7 @@ getAll()
 ```
 
 * Returns a Promise which resolves to a JSON object containing a collection of book objects.
-* This collection represents the books currently in the bookshelves in your app.
+* This collection represents the books currently in the bookshelves in my app.
 
 ### `update`
 
@@ -50,7 +50,7 @@ search(query)
 
 * query: `<String>`
 * Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
-* These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
+* These books do not know which shelf they are on. They are raw results only.
 
 ## Important
 The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md).
