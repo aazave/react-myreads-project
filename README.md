@@ -11,7 +11,6 @@ Please follow the Getting Started section to ensure the project will run without
 How to get up and running with this project:
 
 * install all project dependencies with `npm install`
-* install react-router-dom with `npm install react-router-dom`
 * start the development server with `npm start`
 
 ## Backend Server
