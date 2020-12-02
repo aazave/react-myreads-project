@@ -2,7 +2,7 @@
 
 This project showcases my understanding of React and ES6.
 
-The MyReads project is bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read. You also have the ability to search and add...that is categorize these books (read, currently reading, want to read) provided by the Backend server on the search page. 
+The MyReads project is bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read. You also have the ability to search and add...that is categorize these books (read, currently reading, want to read) provided by the Backend server on the search page. Books that you've categorized in the search page will also show up on the main page. 
 
 Please follow the Getting Started section to ensure the project will run without errors.
 
