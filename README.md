@@ -1,12 +1,17 @@
-# MyReads Project
+# MyReads Project Description
 
 This project showcases my understanding of React and ES6.
+
+The MyReads project is bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read. You also have the ability to search and add...that is categorize these books (read, currently reading, want to read) provided by the Backend server on the search page. 
+
+Please follow the Getting Started section to ensure the project will run without errors.
 
 ## Getting Started
 
 How to get up and running with this project:
 
 * install all project dependencies with `npm install`
+* install react-router-dom with `npm install react-router-dom`
 * start the development server with `npm start`
 
 ## Backend Server
